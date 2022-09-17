@@ -8,7 +8,7 @@
 
 ![text](../screenshots/part1/_2.png)
 
-# 1.1 Networks and Masks
+### 1.1 Networks and Masks
 
 1. Network address of 192.167.38.54/13
 
@@ -41,7 +41,7 @@
 - /4
 ![text](../screenshots/part1/1_1_3-4.png)
 
-# 1.2 Localhst
+### 1.2 Localhst
 - can be accessed with
     + 127.0.0.2
     + 127.1.0.1
@@ -50,7 +50,7 @@
     + 128.0.0.1
 
 
-# 1.3. Network ranges and segments
+### 1.3. Network ranges and segments
 
 1. Which of the listed IPs can be used as public and which only as private: 10.0.0.45, 134.43.0.2, 192.168.4.2, 172.20.250.4, 172.0.2.1, 192.172.0.1, 172.68.0.2, 172.16.255.255, 10.10.10.10, 192.169.168.1
 
@@ -103,7 +103,7 @@
     - after network applied
 ![text](../screenshots/part2/_5.png)
 
-# 2.1. Adding a static route manually
+### 2.1. Adding a static route manually
 
 - Add a static route from one machine to another and back using a 'ip r add' command.
 ![text](../screenshots/part2/1_1.png)
@@ -113,7 +113,7 @@
 ![text](../screenshots/part2/1_2.png)
 
 
-# 2.2. Adding a static route with saving
+### 2.2. Adding a static route with saving
 
 - Restart the machines
 ![text](../screenshots/part2/2_1.png)
@@ -132,10 +132,35 @@ file to the report.
 
 - In this task you need to use ws1 and ws2 from Part 2.
 
-- No iperf3, installing it
-
+- No iperf3, installing it.
 ![text](../screenshots/part3/_1.png)
+There is no internet connection. So to download iperf3 these steps are needed to be done:
+   + Turn on the second interface to be able to set up the Internet.
+   + Turn on DHCP for the second interface in the netplan. sudo nano /etc/netplan/00-interface-config.yaml
+![text](../screenshots/part3/_2.png)
+   + Netplan apply.
+   + Ping an address to be sure that it works
+![text](../screenshots/part3/_3.png)
 
-# 3.1. Connection speed
+- Successfull installation
+![text](../screenshots/part3/_4.png)
+
+- Also installed on ws2
+
+### 3.1. Connection speed
 
 - Convert and write results in the report: 8 Mbps to MB/s, 100 MB/s to Kbps, 1 Gbps to Mbps
+
+    + 8Mbps -> 1MB/s
+    + 100MB/s -> 819200Kbps
+    + 1Gbps -> 1024Mbps
+
+
+### 3.2. iperf3 utility
+
+- Measure connection speed between ws1 and ws2. Add a screenshots with the call and output of the used commands to the report.
+
+   + $ sudo apt-get install iperf3
+   + On the server $ iperf3 -s
+   + On the client $ iperf3 -c 172.24.116.8 -p 5201
+![text](../screenshots/part3/2_1.png)
