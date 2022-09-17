@@ -164,3 +164,47 @@ There is no internet connection. So to download iperf3 these steps are needed to
    + On the server $ iperf3 -s
    + On the client $ iperf3 -c 172.24.116.8 -p 5201
 ![text](../screenshots/part3/2_1.png)
+
+
+## Part 4. Network firewall
+
+
+### 4.1. iptables utility
+
+- Create a /etc/firewall.sh file simulating the firewall on ws1 and ws2 - creating /etc/firewall.sh with command 'sudo nano /etc/firewall.sh' and entering the 'flush' and 'delete chain' commands:
+
+![text](../screenshots/part4/1_1.png)
+
+The following rules should be added to the file in a row:
+
++ 1 - on ws1 apply a strategy where a deny rule is written at the beginning and an allow rule is written at the end (this applies to points 4 and 5)
++ 2 - on ws2 apply a strategy where an allow rule is written at the beginning and a deny rule is written at the end (this applies to points 4 and 5)
++ 3 - open access on machines for port 22 (ssh) and port 80 (http)
++ 4 - reject echo reply (machine must not ping, i.e. there must be a lock on OUTPUT)
++ 5 - allow echo reply (machine must be pinged)
+
+Add screenshots of the /etc/firewall file for each machine to the report.
+
+
+- entering the iptable commands for ws1 and ws2 according to the instructions:
+
+![text](../screenshots/part4/1_2.png)
+
+
+- run the files on both machines with chmod +x /etc/firewall.sh and /etc/firewall.sh commands 
+    + sudo chmod +x /etc/firewall.sh
+    + sudo /etc/firewall.sh
+    + ping -c 5 8.8.8.8 to add some data transmission
+    + listing the created rules: sudo iptables -L
+
+
+Add screenshots of both files running to the report.
+Describe in the report the difference between the strategies used in the first and second files.
+
+![text](../screenshots/part4/1_3.png)
+![text](../screenshots/part4/1_4.png)
+
+- flags explained:
+![text](../screenshots/part4/1_5.png)
+
+- difference between strategies - first suitable rule met is going to be executed. Rules that are applied after are going to be ignored.
