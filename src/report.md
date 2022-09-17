@@ -99,3 +99,43 @@
 
     - sudo netplan apply
 ![text](../screenshots/part2/_4.png)
+
+    - after network applied
+![text](../screenshots/part2/_5.png)
+
+# 2.1. Adding a static route manually
+
+- Add a static route from one machine to another and back using a 'ip r add' command.
+![text](../screenshots/part2/1_1.png)
+
+
+- Ping the connection between the machines. Add a screenshot with the call and output of the used commands to the report.
+![text](../screenshots/part2/1_2.png)
+
+
+# 2.2. Adding a static route with saving
+
+- Restart the machines
+![text](../screenshots/part2/2_1.png)
+
+
+- Add static route from one machine to another using etc/netplan/00-installer-config.yaml file. Add screenshots of the changed etc/netplan/00-installer-config.yaml
+file to the report.
+
+![text](../screenshots/part2/2_2.png)
+
+- Ping the connection between the machines. Add a screenshot with the call and output of the used commands to the report.
+![text](../screenshots/part2/2_3.png)
+
+
+## Part 3. iperf3 utility
+
+- In this task you need to use ws1 and ws2 from Part 2.
+
+- No iperf3, installing it
+
+![text](../screenshots/part3/_1.png)
+
+# 3.1. Connection speed
+
+- Convert and write results in the report: 8 Mbps to MB/s, 100 MB/s to Kbps, 1 Gbps to Mbps
