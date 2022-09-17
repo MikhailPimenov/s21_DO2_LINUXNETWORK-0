@@ -86,3 +86,16 @@
 - Start two virtual machines (hereafter -- ws1 and ws2)
 ![text](../screenshots/part2/_1.png)
 
+
+- View existing network interfaces with the ip a command 
+    - Add a screenshot with the call and output of the used command to the report.
+![text](../screenshots/part2/_2.png)
+
+
+- Describe the network interface corresponding to the internal network on both machines and set the following addresses and masks: ws1 - 192.168.100.10, mask */16 *, ws2 - 172.24.116.8, mask /12
+    - Add screenshots of the changed etc/netplan/00-installer-config.yaml file for each machine to the report.
+    - sudo nano /etc/netplan/00-installer-config.yaml
+![text](../screenshots/part2/_3.png)
+
+    - sudo netplan apply
+![text](../screenshots/part2/_4.png)
