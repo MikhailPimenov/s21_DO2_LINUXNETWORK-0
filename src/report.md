@@ -309,3 +309,92 @@ p.s. Do not upload dumps to git under any circumstances!
 Add screenshots with the call and output of the used commands to the report.
 
 ![text](../screenshots/part5/3_3.png)
+
+
+## 5.4. Adding static routes
+
+ - Add static routes to r1 and r2 in configuration file
+
+- Add screenshots of the changed etc/netplan/00-installer-config.yaml file for each router to the report
+
+![text](../screenshots/part5/4_2.png)
+
+
+- Call ip r and show route tables on both routers
+
+![text](../screenshots/part5/4_3.png)
+
+
+- Run ip r list 10.10.0.0/[netmask] and ip r list 0.0.0.0/0 commands on ws11
+
+![text](../screenshots/part5/4_4.png)
+
+
+- Explain in the report why a different route other than 0.0.0.0/0 had been selected for 10.10.0.0/[netmask] although it could be the default route:
+First IP and mask suits the route that is set in netplan (10.10.0.0/18) and the other one doesn't (one of the things that doesn't fit under the rule - 0.0.0.0/0 is out of the set mask), so it follows the default route set.
+
+
+### 5.5. Making a router list
+
+
+- Traceroute utility output after adding a gateway and $ tcpdump -tnv -i eth0
+
+![text](../screenshots/part5/5_1.png)
+
+![text](../screenshots/part5/5_2.png)
+
+- Based on the output of the dump on r1, explain in the report how path construction works using traceroute:
+First the data goes to the eth0 interface of the r1 router, then it gets routed to the second router using eth0 interface of r2 and finally gets routed to destination 10.20.0.10.
+
+_<h2 align="left"> 5.6. Using ICMP protocol in routing:</h2>_ 
+
+_`$ tcpdump -n -i eth0 icmp` command on the r1 and `$ ping -c 1 10.30.0.111` from the ws11 machine:_ \
+<img src="../screenshots/part5/6_1.png" alt="6_1.png" width="800"/>
+
+_Save dumps of the virtual machine images: OK
+
+_<h2 align="left"> Part 6. Dynamic IP configuration using DHCP:</h2>_
+
+_<h3 align="left"> 1) Specify the default router address, DNS-server and internal network address:</h3>_
+
+`$ sudo apt install isc-dhcp-server`.
+
+_For r2, configure the DHCP service in the /etc/dhcp/dhcpd.conf file:_ \
+<img src="../screenshots/part6/1_1.png" alt="1_1.png" width="800"/>
+
+_<h3 align="left"> 2) Write nameserver 8.8.8.8. in a resolv.conf file:</h3>_
+
+_Write nameserver 8.8.8.8. in a resolv.conf file:_ \
+<img src="../screenshots/part6/1_2.png" alt="1_2.png" width="800"/>
+
+_Restart the DHCP service with systemctl restart isc-dhcp-server:_ \
+<img src="../screenshots/part6/1_3.png" alt="1_3.png" width="800"/>
+
+Update netplan of ws21 for DHCP to take effect. 
+
+_Reboot the ws21 machine with reboot and show with ip a that it has got an address (above old output and below new)._ \
+<img src="../screenshots/part6/1_4.png" alt="1_4.png" width="800"/>
+
+_Ping ws22 from ws21:_ \
+<img src="../screenshots/part6/1_5.png" alt="1_5.png" width="800"/>
+
+_Specify MAC address at ws11 by adding to etc/netplan/00-installer-config.yaml:_ \
+<img src="../screenshots/part6/1_6.png" alt="1_6.png" width="800"/> \
+<img src="../screenshots/part6/1_7.png" alt="1_7.png" width="800"/>  \
+<img src="../screenshots/part6/1_8.png" alt="1_8.png" width="800"/>
+
+_Сonfigure r1 the same way as r2, but make the assignment of addresses strictly linked to the MAC-address (ws11):_ \
+<img src="../screenshots/part6/1_9.png" alt="r1_dhcp_set" width="800"/> \
+<img src="../screenshots/part6/1_10.png" alt="r1_dhcp_restarted" width="800"/> \
+<img src="../screenshots/part6/1_11.png" alt="ws11_new_ip_received" width="800"/>
+
+_Ping ws22 from ws11:_ \
+<img src="../screenshots/part6/1_12.png" alt="ping_ws22_from_ws11" width="800"/>
+
+_Request ip address update from ws21:_ \
+<img src="../screenshots/part6/1_13.png" alt="ws21_request_new_ip" width="800"/>
+
+_Describe in the report what DHCP server options were used in this point:_ \
+The -r flag explicitly releases the current lease, and once the lease has been released, the client exits.
+
+_Save dumps of virtual machine images:_ OK
