@@ -249,3 +249,25 @@ p.s. Do not upload dumps to git under any circumstances!
 ![text](../screenshots/part5/_2.png)
    + all five machines
 ![text](../screenshots/part5/_3.png)
+
+
+### 5.1. Configuration of machine addresses
+
+- Set up the machine configurations in etc/netplan/00-installer-config.yaml according to the network in the picture.
+
+![text](../screenshots/part5/1_1.png)
+
+
+- Add screenshots of the etc/netplan/00-installer-config.yaml file for each machine to the report.
+
+![text](../screenshots/part5/1_2.png)
+
+
+- Restart the network service. If there are no errors, check that the machine address is correct with the ip -4 acommand. Also ping ws22 from ws21. Similarly ping r1 from ws11.
+
+![text](../screenshots/part5/1_3.png)
+
+
+- Add screenshots with the call and output of the used commands to the report.
+
+![text](../screenshots/part5/1_4.png)
