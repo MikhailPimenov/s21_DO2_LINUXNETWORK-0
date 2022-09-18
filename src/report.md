@@ -238,3 +238,14 @@ p.s. Do not upload dumps to git under any circumstances!
 ![text](../screenshots/part4/2_5.png)
 
 
+## Part 5. Static network routing:
+
+- Start five virtual machines (3 workstations (ws11, ws21, ws22) and 2 routers (r1, r2)):
+
+- switching hostname for each machine
+   + sudo hostnamectl set-hostname \<new_hostname\>
+![text](../screenshots/part5/_1.png)
+   + after sudo reboot
+![text](../screenshots/part5/_2.png)
+   + all five machines
+![text](../screenshots/part5/_3.png)
