@@ -208,3 +208,33 @@ Describe in the report the difference between the strategies used in the first a
 ![text](../screenshots/part4/1_5.png)
 
 - difference between strategies - first suitable rule met is going to be executed. Rules that are applied after are going to be ignored.
+
+
+### 4.2. nmap utility:
+
+
+- Use ping command to find a machine which is not pinged, then use nmap utility to show that the machine host is up
+Check: nmap output should say: Host is up.
+
+- installing nmap - sudo apt-get install nmap
+
+- contents of firewall.sh
+
+![text](../screenshots/part4/2_1.png)
+
+
+- Add screenshots with the call and output of the ping and nmap commands to the report - ping and nmap:
+
+![text](../screenshots/part4/2_2.png)
+
+
+- Save dumps of the virtual machine images
+p.s. Do not upload dumps to git under any circumstances!
+
+   + export to files
+![text](../screenshots/part4/2_3.png)
+   + snapshots
+![text](../screenshots/part4/2_4.png)
+![text](../screenshots/part4/2_5.png)
+
+
