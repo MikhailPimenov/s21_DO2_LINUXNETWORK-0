@@ -257,17 +257,55 @@ p.s. Do not upload dumps to git under any circumstances!
 
 ![text](../screenshots/part5/1_1.png)
 
+![text](../screenshots/part5/1_2-0.png)
+
 
 - Add screenshots of the etc/netplan/00-installer-config.yaml file for each machine to the report.
 
 ![text](../screenshots/part5/1_2.png)
 
 
-- Restart the network service. If there are no errors, check that the machine address is correct with the ip -4 acommand. Also ping ws22 from ws21. Similarly ping r1 from ws11.
-
-![text](../screenshots/part5/1_3.png)
-
+- Restart the network service. If there are no errors, check that the machine address is correct with the ip -4 a command. Also ping ws22 from ws21. Similarly ping r1 from ws11.
 
 - Add screenshots with the call and output of the used commands to the report.
 
+   + restarting
+![text](../screenshots/part5/1_3.png)
+   + checking with 'ip -4 a' command and pinging ws22 from ws21 and r1 from ws11
 ![text](../screenshots/part5/1_4.png)
+
+
+
+### 5.2. Enabling IP forwarding
+
+- To enable IP forwarding, run the following command on the routers: sysctl -w net.ipv4.ip_forward=1.
+
+- With this approach, the forwarding will not work after the system is rebooted.
+
+- Add a screenshot with the call and output of the used command to the report
+
+![text](../screenshots/part5/2_1.png)
+![text](../screenshots/part5/2_2.png)
+
+
+### 5.3. Default route configuration
+
+
+- Configure the default route (gateway) for the workstations. To do this, add default before the router's IP in the configuration file
+
+- Add a screenshot of the etc/netplan/00-installer-config.yaml file to the report.
+
+![text](../screenshots/part5/3_1.png)
+
+- Call ip r and show that a route is added to the routing table
+
+- Add a screenshot with the call and output of the used command to the report.
+
+![text](../screenshots/part5/3_2.png)
+
+
+- Ping r2 router from ws11 and show on r2 that the ping is reaching. To do this, use the 'tcpdump -tn -i eth1' command.
+
+Add screenshots with the call and output of the used commands to the report.
+
+![text](../screenshots/part5/3_3.png)
